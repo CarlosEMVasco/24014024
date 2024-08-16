@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    float receita, despesa, saldo;
+
+    // Solicita ao usuário a receita
+    printf("Digite o valor da receita: ");
+    if (scanf("%f", &receita) != 1 || receita < 0) {
+        printf("Entrada inválida. Por favor, insira um número positivo para a receita.\n");
+        return 1;
+    }
+
+    // Solicita ao usuário a despesa
+    printf("Digite o valor da despesa: ");
+    if (scanf("%f", &despesa) != 1 || despesa < 0) {
+        printf("Entrada inválida. Por favor, insira um número positivo para a despesa.\n");
+        return 1;
+    }
+
+    // Calcula o saldo
+    saldo = receita - despesa;
+
+    // Exibe o saldo atualizado
+    printf("O saldo atualizado é: %.2f\n", saldo);
+
+    return 0;
+}
