@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+#define ARQUIVO_VISITANTES "visitantes.txt"
+
+int main() {
+    int numeroVisitantes = 0;
+    int visitantesAnteriores = 0;
+    FILE *arquivo;
+
+    // Abre o arquivo para leitura
+    arquivo = fopen(ARQUIVO_VISITANTES, "r");
+    if (arquivo != NULL) {
+        // Lê o número de visitantes acumulado, se o arquivo existir
+        fscanf(arquivo, "%d", &visitantesAnteriores);
+        fclose(arquivo);
+    } else {
+        // Se o arquivo não existir, inicia com 0
+        visitantesAnteriores = 0;
+    }
+
+    // Solicita ao recepcionista o número de novos visitantes
+    printf("Digite o número de visitantes que entraram hoje: ");
+    scanf("%d", &numeroVisitantes);
+
+    // Atualiza o número total de visitantes
+    visitantesAnteriores += numeroVisitantes;
+
+    // Abre o arquivo para escrita (ou cria um novo se não existir)
+    arquivo = fopen(ARQUIVO_VISITANTES, "w");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        return 1;
+    }
+    
+    // Escreve o novo número total de visitantes no arquivo
+    fprintf(arquivo, "%d", visitantesAnteriores);
+    fclose(arquivo);
+
+    // Exibe uma mensagem de confirmação
+    printf("Número de visitantes registrado com sucesso: %d\n", visitantesAnteriores);
+
+    return 0;
+}
