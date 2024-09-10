@@ -1,1 +1,28 @@
+#include <stdio.h>
+#include <locale.h>
 
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Declaração das variáveis
+    double P, V, T, M;
+
+    // Pergunta a pressão, volume e temperatura
+    printf("Digite a pressão do pneu (em psi): ");
+    scanf("%lf", &P);
+
+    printf("Digite o volume do pneu (em litros): ");
+    scanf("%lf", &V);
+
+    printf("Digite a temperatura (em graus Fahrenheit): ");
+    scanf("%lf", &T);
+
+    // Calcula a massa de ar usando a fórmula fornecida
+    M = (P * V) / (0.37 * (T + 460));
+
+    // Exibe o resultado
+    printf("A massa de ar no pneu é: %.2lf libras\n", M);
+
+    return 0;
+}
