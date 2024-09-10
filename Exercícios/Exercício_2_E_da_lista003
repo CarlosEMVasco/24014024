@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <math.h>  // Para a função ceil
+#include <locale.h>
+
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Declaração das variáveis
+    double largura, altura;
+    double area, tintaNecessaria, latasNecessarias;
+
+    // Constantes
+    const double consumoPorMetroQuadrado = 300.0; // em ml
+    const double volumePorLata = 2000.0; // em ml (2 litros)
+
+    // Pergunta as medidas da parede
+    printf("Digite a largura da parede (em metros): ");
+    scanf("%lf", &largura);
+
+    printf("Digite a altura da parede (em metros): ");
+    scanf("%lf", &altura);
+
+    // Calcula a área da parede
+    area = largura * altura;
+
+    // Calcula a quantidade total de tinta necessária
+    tintaNecessaria = area * consumoPorMetroQuadrado;
+
+    // Calcula o número de latas necessárias
+    latasNecessarias = tintaNecessaria / volumePorLata;
+
+    // Arredonda para cima, pois não é possível comprar uma fração de lata
+    latasNecessarias = ceil(latasNecessarias);
+
+    // Exibe o resultado
+    printf("Você precisará de %.0f lata(s) de tinta para pintar a parede.\n", latasNecessarias);
+
+    return 0;
+}
