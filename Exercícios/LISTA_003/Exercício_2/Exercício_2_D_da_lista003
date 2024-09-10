@@ -1,1 +1,24 @@
+#include <stdio.h>
+#include <math.h>  // Para a constante M_PI
+#include <locale.h>
 
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Declaração da variável
+    double raio;
+    double area;
+
+    // Pergunta o raio do círculo
+    printf("Digite o raio do círculo: ");
+    scanf("%lf", &raio);
+
+    // Calcula a área do círculo
+    area = M_PI * raio * raio;
+
+    // Exibe o resultado
+    printf("A área do círculo com raio %.2lf é %.2lf\n", raio, area);
+
+    return 0;
+}
