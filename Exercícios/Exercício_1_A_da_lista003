@@ -1,7 +1,0 @@
-#include <stdio.h>
-
-int main() {
-    long long n = 4000000000LL;  // Usa long long para garantir que o valor caiba
-    printf("%lld\n", n);         // Usa %lld para imprimir long long
-    return 0;
-}
