@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Declaração das variáveis para armazenar os números
+    float numero1, numero2, numero3;
+
+    // Leitura dos três números
+    printf("Digite o primeiro número: ");
+    scanf("%f", &numero1);
+
+    printf("Digite o segundo número: ");
+    scanf("%f", &numero2);
+
+    printf("Digite o terceiro número: ");
+    scanf("%f", &numero3);
+
+    // Impressão dos números na ordem inversa
+    printf("Números na ordem inversa:\n");
+    printf("%.2f\n", numero3);
+    printf("%.2f\n", numero2);
+    printf("%.2f\n", numero1);
+
+    return 0;
+}
