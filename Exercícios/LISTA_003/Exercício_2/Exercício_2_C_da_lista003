@@ -1,1 +1,34 @@
+#include <stdio.h>
+#include <locale.h>
 
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Declaração das variáveis
+    char nome[100];
+    int idade;
+    int diasDeVida;
+
+    // Pergunta o nome do usuário
+    printf("Qual é o seu nome? ");
+    fgets(nome, sizeof(nome), stdin);
+
+    // Remove o caractere de nova linha '\n' se presente
+    size_t len = strlen(nome);
+    if (len > 0 && nome[len - 1] == '\n') {
+        nome[len - 1] = '\0';
+    }
+
+    // Pergunta a idade do usuário
+    printf("Quantos anos você tem, %s? ", nome);
+    scanf("%d", &idade);
+
+    // Calcula o número aproximado de dias de vida
+    diasDeVida = idade * 365;
+
+    // Exibe o resultado
+    printf("Olá, %s! Você tem aproximadamente %d dias de vida.\n", nome, diasDeVida);
+
+    return 0;
+}
