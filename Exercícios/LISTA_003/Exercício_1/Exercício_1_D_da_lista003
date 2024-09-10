@@ -1,1 +1,8 @@
+#include <stdio.h>
 
+int main() {
+    int a;              // Declara a variável
+    scanf("%d", &a);    // Lê um valor inteiro e armazena em 'a'
+    printf("%d\n", a);  // Imprime o valor de 'a' e adiciona uma quebra de linha
+    return 0;
+}
