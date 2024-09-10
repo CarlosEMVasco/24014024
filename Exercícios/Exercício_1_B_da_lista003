@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+int main() {
+    int a;              // Declara a variável antes de usá-la
+    a = 42;             // Inicializa a variável para evitar valores indefinidos
+    printf("%d\n", a);  // Usa %d para imprimir um int
+    return 0;
+}
