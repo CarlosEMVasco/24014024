@@ -1,1 +1,27 @@
+#include <stdio.h>
+#include <locale.h>
 
+int main() {
+
+    setlocale(LC_ALL,"portuguese");
+
+    // Variável para armazenar o nome do usuário
+    char nome[100];
+
+    // Passo 1: Saudação inicial
+    printf("Olá eu sou o Nº 1, como é seu nome?\n");
+
+    // Passo 2: Leitura do nome do usuário
+    fgets(nome, sizeof(nome), stdin);
+
+    // Remove o caractere de nova linha '\n' se presente
+    size_t len = strlen(nome);
+    if (len > 0 && nome[len - 1] == '\n') {
+        nome[len - 1] = '\0';
+    }
+
+    // Passo 3: Mensagem de boas-vindas
+    printf("Bem-vindo ao clube %s!\n", nome);
+
+    return 0;
+}
