@@ -17,5 +17,5 @@ int main ()
    return 0;
 }
 
-//exibição: Digite a temperatura em Fahrenheit: 681
-//          Temperatura em Celsius: 360.555556
+//exibição: Digite a temperatura em Fahrenheit: 024
+//          Temperatura em Celsius: -4,44
