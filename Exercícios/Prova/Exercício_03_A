@@ -18,4 +18,4 @@ int main ()
 }
 
 //exibição: Digite a temperatura em Fahrenheit: 024
-//          Temperatura em Celsius: -4,44
+//          Temperatura em Celsius: -4.44
