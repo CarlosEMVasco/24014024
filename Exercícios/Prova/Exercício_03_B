@@ -19,5 +19,5 @@ int main ()
 }
 
 //o código mostrará resultado 0, pois a divisão não resulta em número inteiro, portanto C = 0 nessas condições:
-// Temperatura em Fahrenheit: 681
+// Temperatura em Fahrenheit: 024
 // Temperatura em Celsius: 0
