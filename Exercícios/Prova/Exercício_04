@@ -1,1 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<locale.h>
 
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+
+    float T;
+    printf("\nEntre com a temp. em celsius: ");
+    scanf("%f", &T);
+
+    if(T<=0)
+    {
+        printf("\nGeleira-Temperatura muito fria!");
+    }
+
+    else if((T>=1)&&(T<=15))
+    {
+        printf("\nFrio-Pode precisar de um casaco!");
+    }
+
+    else if((T>=16)&&(T<=25))
+    {
+        printf("\nAgradável-Tempo bom para sair!");
+    }
+
+    else if((T>=26)&&(T<=35))
+    {
+        printf("\nQuente-ótimo para um dia de praia!");
+    }
+    else
+    {
+        printf("\nMuito quente-Mantenha-se hidratado!");
+    }
+    return 0;
+}
