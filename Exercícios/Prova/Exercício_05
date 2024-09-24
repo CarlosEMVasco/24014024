@@ -1,1 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<locale.h>
 
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+
+    float T;
+    printf("\nEntre com a temperatura do depósito: ");
+    scanf("%f", &T);
+
+    if(T<-10)
+    {
+        printf("\nRisco baixo - Armazenamento ideal para alimentos congelados");
+    }
+
+    else if((T>=-10)&&(T<=0))
+    {
+        printf("\nRisco moderado - Condições aceitáveis para armazenamento refrigerado");
+    }
+
+    else if((T>=1)&&(T<=10)||(T==15))
+    {
+        printf("\nRisco elevado - Monitore a temperatura");
+    }
+    else
+    {
+        printf("\nRisco crítico - Ação imediata necessária!");
+    }
+    return 0;
+}
