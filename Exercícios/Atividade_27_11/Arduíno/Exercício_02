@@ -1,24 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
 int cameraData[10];  // Declaração do vetor com 10 elementos
 
-// Função que simula a leitura de um valor analógico (0 a 1023)
-int analogRead(int pin) {
-    // Aqui vamos simular uma leitura aleatória entre 0 e 1023
-    return rand() % 1024;  // Retorna um valor aleatório entre 0 e 1023
+void setup() {
+  Serial.begin(9600);  // Inicializa a comunicação serial
+
+  // Lê o valor do pino A1 e armazena no índice 3 do vetor cameraData
+  cameraData[3] = analogRead(A1);  
+
+  // Exibe o valor armazenado no índice 3 do vetor
+  Serial.print("Valor lido de A1 (armazenado em cameraData[3]): ");
+  Serial.println(cameraData[3]);
 }
 
-int main() {
-    // Inicializa o gerador de números aleatórios
-    srand(time(NULL));
-    
-    // Simula a leitura do pino A1 e armazena no índice 3 do vetor cameraData
-    cameraData[3] = analogRead(1);  // Simulando leitura do pino A1
-    
-    // Exibe o valor armazenado no índice 3 do vetor
-    printf("Valor lido de A1 (simulado): %d\n", cameraData[3]);
-
-    return 0;
+void loop() {
+  // O loop principal pode estar vazio para este exemplo
 }
