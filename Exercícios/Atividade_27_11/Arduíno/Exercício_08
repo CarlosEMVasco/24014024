@@ -1,0 +1,17 @@
+int sensorData[10];  // Vetor de 10 inteiros
+
+void setup() {
+  // Inicializa a comunicação serial
+  Serial.begin(9600);
+  
+  // Calcula o número de elementos do vetor
+  int tamanhoVetor = sizeof(sensorData) / sizeof(sensorData[0]);
+  
+  // Imprime o tamanho do vetor
+  Serial.print("O tamanho do vetor sensorData é: ");
+  Serial.println(tamanhoVetor);
+}
+
+void loop() {
+  // Nada a fazer aqui, pois já calculamos o tamanho no setup
+}
