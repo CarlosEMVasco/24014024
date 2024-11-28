@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    float nivel_combustivel;
+
+    // Loop contínuo até o nível de combustível atingir 100%
+    while (1) {
+        // Solicita o nível de combustível ao usuário
+        printf("Digite o nível de combustível em %%: ");
+        scanf("%f", &nivel_combustivel);
+
+        // Verifica se o nível de combustível está abaixo de 15%
+        if (nivel_combustivel < 15.0) {
+            printf("ALERTA! Nível de combustível abaixo de 15%%. Por favor, recarregue o veículo.\n");
+        }
+        
+        // Verifica se o nível de combustível atingiu 100%
+        if (nivel_combustivel == 100.0) {
+            printf("Nível de combustível completo. Sistema encerrado.\n");
+            break; // Sai do loop quando o nível atingir 100%
+        }
+
+        // Exibe o status do nível de combustível
+        printf("Nível de combustível atual: %.2f%%\n", nivel_combustivel);
+    }
+
+    return 0;
+}
