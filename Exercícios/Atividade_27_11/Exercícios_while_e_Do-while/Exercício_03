@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int passos_totais = 0;   // Inicializa a contagem total de passos
+    int passos_atual;        // Armazena os passos dados no intervalo atual
+
+    // Loop contínuo até atingir a meta de 10.000 passos
+    while (passos_totais < 10000) {
+        // Solicita ao usuário o número de passos dados no intervalo
+        printf("Digite o número de passos dados no intervalo: ");
+        scanf("%d", &passos_atual);
+
+        // Soma os passos dados ao total
+        passos_totais += passos_atual;
+
+        // Exibe o progresso até o momento
+        printf("Passos totais até o momento: %d\n", passos_totais);
+
+        // Verifica se a meta de 10.000 passos foi alcançada
+        if (passos_totais >= 10000) {
+            printf("Parabéns! Você atingiu ou ultrapassou a meta de 10.000 passos!\n");
+        }
+    }
+
+    return 0;
+}
