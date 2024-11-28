@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    int acao;  // Variável para armazenar a escolha de ação do usuário
+
+    printf("Controle de Atuação do Robô\n");
+    printf("Escolha uma ação para o robô realizar:\n");
+    printf("1. Ligar a lâmpada\n");
+    printf("2. Tocar um som\n");
+    printf("3. Mover o braço\n");
+    printf("4. Sair\n");
+
+    // Loop para continuar solicitando ações até o usuário decidir sair
+    do {
+        printf("\nDigite o número da ação desejada: ");
+        scanf("%d", &acao);
+
+        // Processa a ação escolhida
+        switch (acao) {
+            case 1:
+                printf("A lâmpada foi ligada!\n");
+                break;
+            case 2:
+                printf("O som foi tocado!\n");
+                break;
+            case 3:
+                printf("O braço foi movido!\n");
+                break;
+            case 4:
+                printf("Programa encerrado. O robô parou.\n");
+                break;
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+                break;
+        }
+    } while (acao != 4);  // Repete até o usuário escolher a opção 4 para sair
+
+    return 0;
+}
