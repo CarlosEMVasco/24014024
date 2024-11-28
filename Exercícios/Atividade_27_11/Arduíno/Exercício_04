@@ -1,0 +1,1 @@
+int ledPins[] = {2, 3, 4, 5};  // Um vetor de pinos de LED (valores de pinos digitais)
