@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <math.h>
+
+float calcular_media(float precos[], int n) {
+    float soma = 0.0;
+    for (int i = 0; i < n; i++) {
+        soma += precos[i];
+    }
+    return soma / n;
+}
+
+float calcular_desvio_padrao(float precos[], int n, float media) {
+    float soma_quadrados = 0.0;
+    for (int i = 0; i < n; i++) {
+        soma_quadrados += pow(precos[i] - media, 2);
+    }
+    return sqrt(soma_quadrados / n);
+}
+
+void analisar_acoes(int dias) {
+    float precos[dias];
+    float media, desvio_padrao;
+
+    // Coleta os preços das ações
+    printf("Digite os preços das ações para os %d dias:\n", dias);
+    for (int i = 0; i < dias; i++) {
+        printf("Dia %d: R$ ", i + 1);
+        scanf("%f", &precos[i]);
+    }
+
+    // Calcula a média e o desvio padrão
+    media = calcular_media(precos, dias);
+    desvio_padrao = calcular_desvio_padrao(precos, dias, media);
+
+    // Exibe os resultados
+    printf("\nResultado da Análise:\n");
+    printf("Média dos preços: R$ %.2f\n", media);
+    printf("Desvio padrão: %.2f%%\n", (desvio_padrao / media) * 100);
+
+    // Classificação do desempenho
+    if (desvio_padrao / media < 0.05) {
+        printf("Desempenho das ações: Estável\n");
+    } else {
+        printf("Desempenho das ações: Volátil\n");
+    }
+}
+
+int main() {
+    int dias;
+    char opcao;
+
+    do {
+        // Solicita o número de dias para análise
+        printf("Quantos dias deseja analisar? ");
+        scanf("%d", &dias);
+
+        // Verifica se o número de dias é válido
+        if (dias <= 0) {
+            printf("Número de dias inválido! Por favor, insira um número positivo.\n");
+            continue;
+        }
+
+        // Realiza a análise
+        analisar_acoes(dias);
+
+        // Pergunta se o usuário deseja analisar novos dados
+        printf("\nDeseja analisar novos dados? (s/n): ");
+        scanf(" %c", &opcao);
+
+    } while (opcao == 's' || opcao == 'S');
+
+    printf("Programa encerrado. Obrigado por usar!\n");
+
+    return 0;
+}
