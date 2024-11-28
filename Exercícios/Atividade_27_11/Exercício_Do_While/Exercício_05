@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+#define SIZE 5  // Tamanho do grid (5x5)
+
+void exibirGrid(int x, int y) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (i == x && j == y) {
+                printf("R ");  // Representa o robô
+            } else {
+                printf(". ");  // Espaço vazio
+            }
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+int main() {
+    int x = 2, y = 2;  // Posição inicial do robô (centro do grid)
+    char comando;
+    
+    printf("Simulador de Navegação Autônoma\n");
+    printf("Grid de 5x5 (Posição inicial: (2,2))\n");
+    
+    while (1) {
+        // Exibe o grid com a posição atual do robô
+        exibirGrid(x, y);
+        
+        printf("Comandos disponíveis: (U)par, (D)own, (L)eft, (R)ight, (S)air: ");
+        scanf(" %c", &comando);  // Lê o comando do usuário
+        
+        // Verifica o comando
+        if (comando == 'S' || comando == 's') {
+            printf("O robô parou.\n");
+            break;  // Para o robô
+        } else if (comando == 'U' || comando == 'u') {
+            if (x > 0) {
+                x--;  // Mover para cima
+            } else {
+                printf("Movimento inválido! O robô está na borda superior.\n");
+            }
+        } else if (comando == 'D' || comando == 'd') {
+            if (x < SIZE - 1) {
+                x++;  // Mover para baixo
+            } else {
+                printf("Movimento inválido! O robô está na borda inferior.\n");
+            }
+        } else if (comando == 'L' || comando == 'l') {
+            if (y > 0) {
+                y--;  // Mover para a esquerda
+            } else {
+                printf("Movimento inválido! O robô está na borda esquerda.\n");
+            }
+        } else if (comando == 'R' || comando == 'r') {
+            if (y < SIZE - 1) {
+                y++;  // Mover para a direita
+            } else {
+                printf("Movimento inválido! O robô está na borda direita.\n");
+            }
+        } else {
+            printf("Comando inválido. Tente novamente.\n");
+        }
+    }
+    
+    return 0;
+}
