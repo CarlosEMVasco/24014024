@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int x = 5, y = 5;  // Posição inicial do robô no meio do espaço (5, 5)
+    char comando[10];   // Comando do usuário
+
+    // Exibe as instruções iniciais
+    printf("Controle de Movimento do Robô (Espaço 10x10)\n");
+    printf("Comandos: 'frente', 'tras', 'esquerda', 'direita', 'sair'\n");
+
+    // Loop para continuar recebendo comandos até o usuário digitar 'sair'
+    while (1) {
+        // Exibe a posição atual do robô
+        printf("Posição do robô: (%d, %d)\n", x, y);
+        printf("Digite um comando: ");
+        scanf("%s", comando);
+
+        // Processa o comando
+        if (strcmp(comando, "frente") == 0) {
+            if (y < 9) y++;  // Move para frente (para cima no espaço)
+        } else if (strcmp(comando, "tras") == 0) {
+            if (y > 0) y--;  // Move para trás (para baixo no espaço)
+        } else if (strcmp(comando, "esquerda") == 0) {
+            if (x > 0) x--;  // Move para a esquerda (para a esquerda no espaço)
+        } else if (strcmp(comando, "direita") == 0) {
+            if (x < 9) x++;  // Move para a direita (para a direita no espaço)
+        } else if (strcmp(comando, "sair") == 0) {
+            break;  // Sai do loop e encerra o programa
+        } else {
+            printf("Comando inválido. Tente novamente.\n");
+        }
+    }
+
+    printf("Programa encerrado. O robô parou na posição (%d, %d).\n", x, y);
+    return 0;
+}
