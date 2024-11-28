@@ -1,0 +1,24 @@
+int randomValues[5];  // Declara o vetor com 5 elementos
+
+void setup() {
+  // Inicializa a comunicação serial
+  Serial.begin(9600);
+
+  // Atribui valores aleatórios para cada elemento do vetor
+  for (int i = 0; i < 5; i++) {
+    randomValues[i] = random(0, 100);  // Gera um valor aleatório entre 0 e 99
+  }
+
+  // Imprime os valores gerados no Monitor Serial
+  Serial.println("Valores aleatórios no vetor:");
+  for (int i = 0; i < 5; i++) {
+    Serial.print("randomValues[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.println(randomValues[i]);
+  }
+}
+
+void loop() {
+  // O loop está vazio, pois as operações foram realizadas no setup()
+}
