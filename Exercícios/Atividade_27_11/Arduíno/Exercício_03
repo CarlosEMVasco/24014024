@@ -1,14 +1,19 @@
-#include <stdio.h>
+// Definir um vetor de floats chamado "temperaturas" com 5 valores
+float temperaturas[] = {25.5, 26.0, 24.8, 27.3, 26.5};
 
-int main() {
-    // Inicialização do vetor de floats com os valores fornecidos
-    float temperaturas[] = {25.5, 26.0, 24.8, 27.3, 26.5};
-    
-    // Imprimindo os valores armazenados no vetor
-    printf("Valores das temperaturas:\n");
-    for (int i = 0; i < 5; i++) {
-        printf("temperaturas[%d] = %.1f\n", i, temperaturas[i]);
-    }
+void setup() {
+  // Inicializa a comunicação serial para monitorar a saída
+  Serial.begin(9600);
 
-    return 0;
+  // Imprimir os valores do vetor "temperaturas"
+  for (int i = 0; i < 5; i++) {
+    Serial.print("temperaturas[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.println(temperaturas[i]);
+  }
+}
+
+void loop() {
+  // O loop pode ficar vazio, pois não há necessidade de atualizar o vetor
 }
