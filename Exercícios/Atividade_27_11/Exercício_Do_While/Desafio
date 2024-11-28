@@ -1,0 +1,172 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define GRID_SIZE 10  // Tamanho do grid de movimento
+#define BATERIA_MAX 100  // Nível máximo de bateria
+#define GRID_NAVEGACAO 5  // Tamanho do grid de navegação autônoma (5x5)
+
+int bateria = BATERIA_MAX;  // Inicializando a bateria com o valor máximo
+
+// Função para exibir o menu principal
+void exibirMenu() {
+    printf("\n=== Menu de Controle do Robô ===\n");
+    printf("1. Controle de Movimento\n");
+    printf("2. Leitura de Sensores de Distância\n");
+    printf("3. Controle de Atuação\n");
+    printf("4. Monitoramento de Bateria\n");
+    printf("5. Navegação Autônoma\n");
+    printf("6. Sair\n");
+    printf("Escolha uma opção: ");
+}
+
+// Função para controlar o movimento do robô no grid 10x10
+void controleMovimento(int *x, int *y) {
+    char comando;
+    printf("Controle de Movimento (Use W/A/S/D para mover):\n");
+    printf("W - Cima\nA - Esquerda\nS - Baixo\nD - Direita\nQ - Voltar\n");
+
+    while (1) {
+        printf("Posição atual: (%d, %d)\n", *x, *y);
+        printf("Digite o comando: ");
+        scanf(" %c", &comando);
+        
+        if (comando == 'Q' || comando == 'q') {
+            break;  // Voltar ao menu principal
+        }
+
+        if (comando == 'W' || comando == 'w') {
+            if (*x > 0) (*x)--;  // Mover para cima
+            else printf("Movimento inválido! Está na borda superior.\n");
+        }
+        else if (comando == 'A' || comando == 'a') {
+            if (*y > 0) (*y)--;  // Mover para esquerda
+            else printf("Movimento inválido! Está na borda esquerda.\n");
+        }
+        else if (comando == 'S' || comando == 's') {
+            if (*x < GRID_SIZE - 1) (*x)++;  // Mover para baixo
+            else printf("Movimento inválido! Está na borda inferior.\n");
+        }
+        else if (comando == 'D' || comando == 'd') {
+            if (*y < GRID_SIZE - 1) (*y)++;  // Mover para direita
+            else printf("Movimento inválido! Está na borda direita.\n");
+        }
+        else {
+            printf("Comando inválido! Tente novamente.\n");
+        }
+    }
+}
+
+// Função para simular a leitura dos sensores de distância
+void leituraSensores() {
+    srand(time(NULL));
+    int distancia = rand() % 101;  // Distância aleatória entre 0 e 100
+    printf("Leitura do Sensor de Distância: %d cm\n", distancia);
+}
+
+// Função para controlar a atuação do robô
+void controleAtuacao() {
+    char acao;
+    printf("Controle de Atuação:\n");
+    printf("Ações disponíveis:\n");
+    printf("L - Ligar luzes\n");
+    printf("M - Mover braço robótico\n");
+    printf("S - Parar\n");
+    printf("Escolha uma ação (L/M/S): ");
+    scanf(" %c", &acao);
+
+    if (acao == 'L' || acao == 'l') {
+        printf("Luzes ligadas.\n");
+    } else if (acao == 'M' || acao == 'm') {
+        printf("Movimento do braço robótico realizado.\n");
+    } else if (acao == 'S' || acao == 's') {
+        printf("Ação parada.\n");
+    } else {
+        printf("Ação inválida.\n");
+    }
+}
+
+// Função para monitorar a bateria do robô
+void monitoramentoBateria() {
+    printf("Nível atual de bateria: %d%%\n", bateria);
+    if (bateria < 20) {
+        printf("Atenção! Bateria baixa. Recarregue o robô.\n");
+    }
+}
+
+// Função para simular a navegação autônoma do robô em um grid 5x5
+void navegacaoAutonoma() {
+    int x = 2, y = 2;  // Posição inicial do robô (centro do grid)
+    char comando;
+    printf("Navegação Autônoma no Grid 5x5 (Posição inicial: (2,2))\n");
+
+    while (1) {
+        // Exibe o grid com a posição do robô
+        for (int i = 0; i < GRID_NAVEGACAO; i++) {
+            for (int j = 0; j < GRID_NAVEGACAO; j++) {
+                if (i == x && j == y) {
+                    printf("R ");  // Representa o robô
+                } else {
+                    printf(". ");  // Espaço vazio
+                }
+            }
+            printf("\n");
+        }
+
+        printf("Comandos disponíveis: (U)par, (D)own, (L)eft, (R)ight, (S)air: ");
+        scanf(" %c", &comando);  // Lê o comando do usuário
+        
+        if (comando == 'S' || comando == 's') {
+            break;  // Para a navegação autônoma
+        } else if (comando == 'U' || comando == 'u') {
+            if (x > 0) x--;
+            else printf("Movimento inválido! Está na borda superior.\n");
+        } else if (comando == 'D' || comando == 'd') {
+            if (x < GRID_NAVEGACAO - 1) x++;
+            else printf("Movimento inválido! Está na borda inferior.\n");
+        } else if (comando == 'L' || comando == 'l') {
+            if (y > 0) y--;
+            else printf("Movimento inválido! Está na borda esquerda.\n");
+        } else if (comando == 'R' || comando == 'r') {
+            if (y < GRID_NAVEGACAO - 1) y++;
+            else printf("Movimento inválido! Está na borda direita.\n");
+        } else {
+            printf("Comando inválido. Tente novamente.\n");
+        }
+    }
+}
+
+int main() {
+    int x = 0, y = 0;  // Posição inicial no grid 10x10
+    int opcao;
+
+    do {
+        exibirMenu();
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                controleMovimento(&x, &y);
+                break;
+            case 2:
+                leituraSensores();
+                break;
+            case 3:
+                controleAtuacao();
+                break;
+            case 4:
+                monitoramentoBateria();
+                break;
+            case 5:
+                navegacaoAutonoma();
+                break;
+            case 6:
+                printf("Saindo do programa...\n");
+                break;
+            default:
+                printf("Opção inválida! Tente novamente.\n");
+        }
+    } while (opcao != 6);  // O programa continuará até que o usuário escolha a opção de sair
+
+    return 0;
+}
