@@ -1,0 +1,35 @@
+//O código calcula e imprime a média das temperaturas em todos os locais monitorados.
+int totalLocais = 3;          // Número total de locais de monitoramento
+int totalLeituras = 5;        // Número total de leituras por local
+int somaTemperaturas = 0;     // Variável para armazenar a soma das temperaturas
+float mediaTemperaturas = 0;  // Variável para armazenar a média das temperaturas
+
+int ambientData[3][5] = {
+  {22, 25, 23, 21, 24},    // Temperaturas no local 1
+  {45, 38, 42, 40, 37},    // Umidade do solo no local 2
+  {400, 380, 420, 410, 390} // CO2 no local 3
+};
+
+void setup() {
+  Serial.begin(9600);  // Inicia a comunicação serial
+  
+  // Calcular a soma das temperaturas
+  for (int i = 0; i < totalLocais; i++) {
+    for (int j = 0; j < totalLeituras; j++) {
+      if (i == 0) {  // Apenas somamos as temperaturas (linha 0)
+        somaTemperaturas += ambientData[i][j];  // Adiciona a leitura de temperatura
+      }
+    }
+  }
+  
+  // Calcular a média das temperaturas
+  mediaTemperaturas = float(somaTemperaturas) / (totalLocais * totalLeituras);
+
+  // Imprimir a média das temperaturas
+  Serial.print("A média de temperatura em todos os locais monitorados é: ");
+  Serial.println(mediaTemperaturas);
+}
+
+void loop() {
+  // O loop está vazio, pois a média é calculada apenas no setup
+}
