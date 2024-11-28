@@ -1,0 +1,16 @@
+// Declaração do vetor ledPins com 4 pinos de LED (valores de pinos digitais)
+int ledPins[] = {2, 3, 4, 5};  
+
+void setup() {
+  // Inicializa a comunicação serial a 9600 bps
+  Serial.begin(9600);
+
+  // Loop para imprimir os valores dos pinos do vetor ledPins
+  for (int i = 0; i < 4; i++) {
+    Serial.println(ledPins[i]);  // Imprime o valor de cada pino no Monitor Serial
+  }
+}
+
+void loop() {
+  // O loop principal está vazio, pois as ações já foram realizadas no setup()
+}
