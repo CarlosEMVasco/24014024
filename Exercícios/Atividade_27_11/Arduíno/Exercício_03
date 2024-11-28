@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    // Inicialização do vetor de floats com os valores fornecidos
+    float temperaturas[] = {25.5, 26.0, 24.8, 27.3, 26.5};
+    
+    // Imprimindo os valores armazenados no vetor
+    printf("Valores das temperaturas:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("temperaturas[%d] = %.1f\n", i, temperaturas[i]);
+    }
+
+    return 0;
+}
