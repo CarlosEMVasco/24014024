@@ -1,18 +1,23 @@
-#include <stdio.h>
+int cameraData[10];  // Declaração do vetor com capacidade para 10 inteiros
 
-int cameraData[10];  // Declaração do vetor com 10 elementos
+void setup() {
+  Serial.begin(9600);  // Inicializa a comunicação serial para monitorar a saída
 
-int main() {
-    // Atribuindo valores ao vetor
-    for (int i = 0; i < 10; i++) {
-        cameraData[i] = i * 10;  // Preenchendo o vetor com múltiplos de 10
-    }
+  // Preenche o vetor com alguns valores
+  for (int i = 0; i < 10; i++) {
+    cameraData[i] = i * 10;  // Armazena múltiplos de 10 nos elementos do vetor
+  }
 
-    // Imprimindo os valores armazenados no vetor
-    printf("Valores no vetor cameraData:\n");
-    for (int i = 0; i < 10; i++) {
-        printf("cameraData[%d] = %d\n", i, cameraData[i]);
-    }
+  // Imprime os valores armazenados no vetor
+  Serial.println("Valores no vetor cameraData:");
+  for (int i = 0; i < 10; i++) {
+    Serial.print("cameraData[");
+    Serial.print(i);
+    Serial.print("] = ");
+    Serial.println(cameraData[i]);
+  }
+}
 
-    return 0;
+void loop() {
+  // O loop pode estar vazio, pois os valores são impressos apenas uma vez
 }
